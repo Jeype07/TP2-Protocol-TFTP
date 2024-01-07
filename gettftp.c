@@ -6,9 +6,11 @@ int main(int argc, char* argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    const char* server = argv[1];
-    const char* file = argv[2];
-    
+    const char* server = argv[1]; // 2e argument : adresse du serveur
+    const char* file = argv[2]; // 3e argument : nom du fichier
+
+
+    // TEST //
     write(STDOUT_FILENO, "Server address: ", 16);
     write(STDOUT_FILENO, server, strlen(server));
     write(STDOUT_FILENO, "\n", 1);
