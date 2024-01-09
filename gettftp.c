@@ -19,5 +19,18 @@ int main(int argc, char* argv[]) {
     write(STDOUT_FILENO, file, strlen(file));
     write(STDOUT_FILENO, "\n", 1);
 
+    struct addrinfo hints;
+    struct addrinfo *results;
+    memset(&hints, 0, sizeof hints);
+
+    hints.ai_family = AF_UNSPEC; // IPv4 ou IPv6
+    hints.ai_socktype = SOCK_DGRAM; // type de socket
+
+    // Obtention des informations sur le serveur (l'adresse) en utilisant getaddrinfo
+    int statut = getaddrinfo(server, "69", &hints, &results);
+    if (statut != 0) {
+        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(statut));
+        exit(EXIT_FAILURE);
+
     return 0;
 }
